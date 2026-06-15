@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>gate_bin_renderer_cpp</name>
+  <version>0.1.0</version>
+  <description>
+    GPU/CPU gate-traversal binary-mask renderer (C++). Subscribes to the drone
+    pose (PX4 vehicle_local_position + vehicle_attitude, or a mocap PoseStamped)
+    and the gate pose (/vrpn_mocap/gate/pose), projects the gate through a
+    pinhole camera model and publishes the binary mask as a sensor_msgs/Image
+    (mono8, RViz-viewable) and an optional Float32MultiArray for a visual policy.
+    Geometry is a faithful port of the dva-quad-jax gate_traversal_binary_mask
+    rasterisers (1/2/4-cam x wireframe/filled/soft). Optional CUDA backend; CPU
+    fallback (OpenMP). Builds on x86 (Humble) and Jetson Orin.
+  </description>
+  <maintainer email="nuthasith.g@gmail.com">nat-nus</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>px4_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>tf2_ros</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

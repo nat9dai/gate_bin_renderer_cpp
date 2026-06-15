@@ -1,0 +1,210 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Status1
+      Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 20
+      Color: 80; 80; 80
+      Plane: XY
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz_default_plugins/RobotModel
+      Name: Drone (charpi_vision)
+      Enabled: true
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Depth: 5
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Visual Enabled: true
+      Collision Enabled: false
+      Alpha: 1
+      Value: true
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Marker Scale: 0.6
+      Show Arrows: false
+      Show Axes: true
+      Show Names: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        arm_1_1:
+          Value: false
+        arm_2_1:
+          Value: false
+        arm_3_1:
+          Value: false
+        arm_4_1:
+          Value: false
+        arm_left_1:
+          Value: false
+        arm_right_1:
+          Value: false
+        base_footprint:
+          Value: true
+        base_link:
+          Value: false
+        base_spacer_1_1:
+          Value: false
+        base_spacer_2_1:
+          Value: false
+        base_spacer_3_1:
+          Value: false
+        base_spacer_4_1:
+          Value: false
+        battery_1:
+          Value: false
+        camera_driver_mounting_1:
+          Value: false
+        camera_front_left_1:
+          Value: false
+        camera_front_right_1:
+          Value: false
+        camera_guard_front_left_1:
+          Value: false
+        camera_guard_front_right_1:
+          Value: false
+        camera_guard_rear_left_1:
+          Value: false
+        camera_guard_rear_right_1:
+          Value: false
+        camera_mounting_front_1:
+          Value: false
+        camera_mounting_rear_1:
+          Value: false
+        camera_rear_left_1:
+          Value: false
+        camera_rear_right_1:
+          Value: false
+        fcu_1:
+          Value: false
+        gate:
+          Value: true
+        jetson_orin_1:
+          Value: false
+        landing_gear_1_1:
+          Value: false
+        landing_gear_2_1:
+          Value: false
+        landing_gear_3_1:
+          Value: false
+        landing_gear_4_1:
+          Value: false
+        middle_lower_plate_1:
+          Value: false
+        middle_spacer_1_1:
+          Value: false
+        middle_spacer_2_1:
+          Value: false
+        middle_spacer_3_1:
+          Value: false
+        middle_spacer_4_1:
+          Value: false
+        middle_spacer_5_1:
+          Value: false
+        middle_spacer_6_1:
+          Value: false
+        middle_upper_plate_1:
+          Value: false
+        motor_1_1:
+          Value: false
+        motor_2_1:
+          Value: false
+        motor_3_1:
+          Value: false
+        motor_4_1:
+          Value: false
+        prop_front_left_1:
+          Value: false
+        prop_front_right_1:
+          Value: false
+        prop_rear_left_1:
+          Value: false
+        prop_rear_right_1:
+          Value: false
+        top_plate_1:
+          Value: false
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Gate body
+      Enabled: true
+      Topic:
+        Value: /gate/gate_marker
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Namespaces:
+        gate: true
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Name: Clean-pass box
+      Enabled: true
+      Topic:
+        Value: /gate/clean_pass_box
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Namespaces:
+        clean_pass_box: true
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Name: Gate binary mask
+      Enabled: true
+      Max Value: 1
+      Min Value: 0
+      Normalize Range: false
+      Topic:
+        Value: /gate/binary_mask
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Value: true
+  Global Options:
+    Background Color: 30; 30; 30
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Distance: 6
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 1.2
+      Pitch: 0.35
+      Yaw: 2.2
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Gate binary mask:
+    collapsed: false
+  Height: 850
+  Width: 1300
+  Hide Left Dock: false
+  Hide Right Dock: false

@@ -1,0 +1,7 @@
+# Build artifacts
+build/
+install/
+log/
+# Golden masks are regenerated from the dva-quad-jax reference by
+# scripts/gen_golden.py; keep the tiny pose cases + meta, not the big arrays.
+test/golden/*.npy

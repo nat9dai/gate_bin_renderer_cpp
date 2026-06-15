@@ -1,0 +1,48 @@
+gate_bin_renderer_node:
+  ros__parameters:
+    # Camera layout (1 | 2 | 4) and rasteriser mode (wireframe | filled | soft).
+    # Defaults match the requested {2-cam, wireframe}. Camera intrinsics/extrinsics
+    # for each ncam are baked in to match the dva-quad-jax reference exactly.
+    ncam: 2
+    mode: "wireframe"
+    tau: 1.5          # soft-mask sharpness (px); used only when mode == "soft"
+
+    # Prefer the CUDA backend; transparently falls back to CPU/OpenMP if the
+    # package was built without CUDA or no GPU is present.
+    use_gpu: true
+
+    # Output topics. The Image (mono8, 0/255) is for RViz + general use; the
+    # Float32MultiArray (flattened [0,1], shape [H, ncam*W]) is for a visual policy.
+    mask_topic: "/gate/binary_mask"
+    publish_float: true
+    float_topic: "/gate/binary_mask_vec"
+    frame_id: "gate_cam"
+    rate: 30.0          # mask publish rate (Hz)
+    pose_timeout: 0.5   # s; stop publishing if drone/gate pose goes stale
+
+    # ── drone pose source ──────────────────────────────────────────────────
+    #   "px4"  -> /fmu/out/vehicle_local_position (NED) + vehicle_attitude (FRD),
+    #             converted to policy ENU/FLU. (matches gate_jax_node px4 path)
+    #   "pose"/"vrpn" -> geometry_msgs/PoseStamped (mocap, already ENU/FLU)
+    #   "odom" -> nav_msgs/Odometry (SITL gz bridge)
+    pose_source: "px4"
+    drone_id: 0
+    gt_pose_topic: "/model/charpi_vision_0/odometry"   # non-px4 sources only
+    gt_pos_offset_enu: [0.0, 0.0, 0.0]   # EKF-origin vs scene offset (ENU, m)
+
+    # ── RViz scene (off by default) ────────────────────────────────────────
+    # Broadcast world->drone(CG) + world->gate TF and the clean-pass body-box
+    # edge marker so RViz can show the drone mesh + gate frame + pass cuboid.
+    publish_tf: false
+    publish_clean_pass_box: false
+    world_frame: "map"
+    drone_frame: "base_footprint"     # = charpi URDF root (CG, FLU) for the mesh
+    gate_frame: "gate"
+    clean_pass_box_topic: "/gate/clean_pass_box"
+    clean_pass_box_size: [0.327, 0.327, 0.127]   # Charpi body box (m)
+
+    # ── gate pose (mocap of the physical gate) ─────────────────────────────
+    gate_pose_topic: "/vrpn_mocap/gate/pose"
+    # Rotates the mocap rigid-body frame to the policy gate frame (opening
+    # normal +x, up +z); 0 = the rigid body is already defined that way.
+    gate_frame_offset_rpy: [0.0, 0.0, 0.0]
